@@ -1,39 +1,51 @@
-.TH tsocks 1 "Jul 2001" "tsocks"
+.TH TSOCKS 1 "" "TSOCKS"
+
 .SH NAME
-tsocks \- the wrapper to use tsocks library transparently to the application
+.BR tsocks 
+\- Shell wrapper to simplify the use of the tsocks(8) library to 
+transparently allow an application to use a SOCKS proxy
 .SH SYNOPSIS
 .B tsocks
 .RB [application\ [application's\ arguments]]
 .br
 or
 .B tsocks
-.RB [on|off]
+.RB [-on|-off]
 .br
 or
 .B tsocks
 .SH DESCRIPTION
 .B tsocks
-is the wrapper between the tsocks library and the application what you
+is a wrapper between the tsocks library and the application what you
 would like to run socksified.
 .SH OPTIONS
 .IP \fB[application\ \fB[application's\ arguments]]
-what application you'd like to socksify with what program's argumets
-.IP \fB[on|off]
-that is useful if you'd like to turn on or off the socksifying with
-expanding or shrinking the LD_PRELOAD environment variable. If you want to
-use this function, you HAVE to source that shell script from yours,
+run the application as specified with the environment (LD_PRELOAD) set
+such that tsocks(8) will transparently proxy SOCKS connections in 
+that program
+.IP \fB[-on|-off]
+this option adds or removes tsocks(8) from the LD_PRELOAD environment
+variable. When tsocks(8) is in this variable all executed
+applications are automatically socksified. If you want to
+use this function, you HAVE to source the shell script from yours,
 like this: "source /usr/bin/tsocks" or ". /usr/bin/tsocks"
 .br
 Example:
 .br
-". tsocks on" -- add the tsocks lib to the LD_PRELOAD
+". tsocks -on" -- add the tsocks lib to LD_PRELOAD (don't forget the
+leading dot!)
 .br
-". tsocks off" -- remove the tsocks lib from the LD_PRELOAD
-.IP \fB[show|sh]
-show the LD_PRELOAD variable
+". tsocks -off" -- remove the tsocks lib from LD_PRELOAD (don't forget the
+leading dot!)
+.IP \fB[-show|-sh]
+show the current value of the LD_PRELOAD variable
 .IP \fB<without\ any\ argument>
-just socksify everything from now with forking a new shell with the right
-new LD_PRELOAD environment variable.
+create a new shell with LD_PRELOAD including tsocks(8). 
 .PP
+.SH SEE ALSO
+tsocks.conf(5)
+tsocks(8)
 .SH AUTHOR
-This crap created by Tamas SZERB <toma@rulez.org>
+This script was created by Tamas SZERB <toma@rulez.org> for the debian
+package of tsocks. It (along with this manual page) have since been 
+adapted into the main tsocks project and modified.

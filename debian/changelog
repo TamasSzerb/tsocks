@@ -1,3 +1,29 @@
+tsocks (1.8beta5-2) unstable; urgency=low
+
+  * Not using socks server for name resolution
+    --enable-socksdns removed. (closes: #233051, #175011, #184654, #204948)
+  * debconf not needed, because it will have an user defined
+    config too. (closes: #179646)
+  * manpages cleanup, references, missings fixed (closes: #226801)
+  * config.{guess,sub} up2date from autotools-dev
+
+ -- Tamas SZERB <toma@rulez.org>  Thu, 22 Apr 2004 10:34:02 +0200
+
+tsocks (1.8beta5-1) unstable; urgency=low
+
+  * new upstream version
+  * mostly bugfixes, eg. close()
+  * remote dns resolving (closes: #166773) with
+    --enable-socksdns --enable-hostnames so please get rid of
+    hostnames in the config file and use ip addresses only!
+    (NOTE: doesn't work as expected)
+  * sed, fileutils are required pkgs (from Build-Depends) so removed
+  * Irritating tsocks script -- sh conflict (closes: #174047)
+  * modified tsocks(8) manpage regarding TSOCKS_CONF_FILE
+    environment variable
+
+ -- Tamas SZERB <toma@rulez.org>  Mon, 23 Dec 2002 09:24:55 +0100
+
 tsocks (1.8beta4-2) unstable; urgency=low
 
   * --disable-hostnames bugfix (closes: #140094)

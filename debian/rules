@@ -14,11 +14,14 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 	-rm -f config.{cache,status} .ChangeLog.swp
+	cp /usr/share/misc/config.guess .
+	cp /usr/share/misc/config.sub .
 	./configure --prefix=/usr \
 		--libdir=/usr/lib \
 		--mandir=/usr/share/man \
-		\
-		--with-conf=/etc/tsocks.conf
+		--with-conf=/etc/tsocks.conf \
+		--enable-hostnames \
+		#--enable-socksdns \
 
 	$(MAKE) CFLAGS="-O2 -g -Wall"
 	touch build-stamp
@@ -51,7 +54,8 @@ install-stamp: build
 	install inspectsocks $(CURDIR)/debian/$(package)/usr/bin
 	install saveme $(CURDIR)/debian/$(package)/usr/bin
 	#in the upstream now:
-	#install -m 755 $(CURDIR)/debian/plus/tsocks $(CURDIR)/debian/$(package)/usr/bin
+	#rm -f $(CURDIR)/debian/$(package)/usr/bin/tsocks
+	install -m 755 $(CURDIR)/debian/plus/tsocks $(CURDIR)/debian/$(package)/usr/bin
 	touch install-stamp
 
 binary-indep: build install
@@ -72,14 +76,14 @@ binary-arch: build install
 	#dh_installdebconf
 
 #how to solve that with dh_installman? (buggy manpage replacing)
-	rm -f $(CURDIR)/debian/$(package)/usr/share/man/man8/tsocks.8
-	#in the upstream now:
-	#sed s:/lib/:/usr/lib/:g $(CURDIR)/tsocks.8 > $(CURDIR)/debian/plus/tsocks.8
-	##dh_compress $(CURDIR)/debian/plus/tsocks.8
-	##dh_compress $(CURDIR)/debian/plus/tsocks.1
+	#rm -f $(CURDIR)/debian/$(package)/usr/share/man/man8/tsocks.8
+	##in the upstream now:
+	##sed s:/lib/:/usr/lib/:g $(CURDIR)/tsocks.8 > $(CURDIR)/debian/plus/tsocks.8
+	###dh_compress $(CURDIR)/debian/plus/tsocks.8
+	###dh_compress $(CURDIR)/debian/plus/tsocks.1
 	#install -o root -g root $(CURDIR)/debian/plus/tsocks.8 $(CURDIR)/debian/$(package)/usr/share/man/man8/
-	#install -o root -g root $(CURDIR)/debian/plus/tsocks.1 $(CURDIR)/debian/$(package)/usr/share/man/man1/
-	#dh_installman
+	install -o root -g root $(CURDIR)/debian/plus/tsocks.1 $(CURDIR)/debian/$(package)/usr/share/man/man1/
+	dh_installman
 
 	dh_installchangelogs ChangeLog upstream
 	dh_installchangelogs
