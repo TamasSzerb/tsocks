@@ -1,0 +1,45 @@
+tsocks (1.8beta4-2) unstable; urgency=low
+
+  * --disable-hostnames bugfix (closes: #140094)
+
+ -- Tamas SZERB <toma@rulez.org>  Wed, 27 Mar 2002 14:31:19 +0100
+
+tsocks (1.8beta4-1) unstable; urgency=low
+
+  * new upstream release
+  * segfault fix on ia64 (closes: #131334)
+  * Allow TSOCKS_CONF_FILE to specify location of config (closes: #135597)
+  * Now respects the default_user and pass specified for path
+    (closes: #135291)
+
+ -- Tamas SZERB <toma@rulez.org>  Mon, 25 Mar 2002 19:28:40 +0100
+
+tsocks (1.7-4) unstable; urgency=low
+
+  * modified description for the sake of Pista ;)
+
+ -- Tamas SZERB <toma@rulez.org>  Wed, 29 Aug 2001 01:24:11 +0200
+
+tsocks (1.7-3) unstable; urgency=low
+
+  * license missed
+  * upload wnpp fix (closes: #105457)
+
+ -- Tamas SZERB <toma@rulez.org>  Mon, 23 Jul 2001 22:35:10 +0200
+
+tsocks (1.7-2) unstable; urgency=low
+
+  * ts -> tsocks (bin, and man too) because the ts package has a ts binary
+
+ -- Tamas SZERB <toma@rulez.org>  Mon, 23 Jul 2001 22:34:49 +0200
+
+tsocks (1.7-1) unstable; urgency=low
+
+  * Initial release.
+  * first upload - wnpp (closes: #105457)
+
+ -- Tamas SZERB <toma@rulez.org>  Sun, 15 Jul 2001 11:03:59 +0200
+
+Local variables:
+mode: debian-changelog
+End:

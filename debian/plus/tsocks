@@ -1,0 +1,49 @@
+#!/bin/sh
+
+if [ $# = 1 ]
+then
+	case "$1" in
+		on)
+			if [ -z "$LD_PRELOAD" ]
+				then
+					export LD_PRELOAD="/usr/lib/libtsocks.so"
+				else
+					echo $LD_PRELOAD | grep -q "/usr/lib/libtsocks\.so" || \
+					export LD_PRELOAD="/usr/lib/libtsocks.so $LD_PRELOAD"
+			fi
+		;;
+		off)
+			export LD_PRELOAD=`echo -n $LD_PRELOAD | sed 's/\/usr\/lib\/libtsocks.so \?//'`
+			if [ -z "$LD_PRELOAD" ]
+				then
+					unset LD_PRELOAD
+			fi
+		;;
+		show|sh)
+			echo "LD_PRELOAD=\"$LD_PRELOAD\""
+		;;
+	esac
+fi
+
+if [ $# = 0 -o $# -gt 1 ]
+then
+	if [ -z "$LD_PRELOAD" ]
+	then
+		export LD_PRELOAD="/usr/lib/libtsocks.so"
+	else
+		echo $LD_PRELOAD | grep -q "/usr/lib/libtsocks\.so" || \
+		export LD_PRELOAD="/usr/lib/libtsocks.so $LD_PRELOAD"
+	fi
+fi
+
+if [ $# = 0 ]
+then
+	${SHELL:-/bin/sh}
+fi
+
+if [ $# -gt 1 ]
+then
+	exec "$@"
+fi
+
+#EOF
