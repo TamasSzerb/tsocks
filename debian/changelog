@@ -1,3 +1,9 @@
+tsocks (1.8beta5-3) unstable; urgency=low
+
+  * TSOCKS_CONFFILE -> TSOCKS_CONF_FILE manpage bug (closes: #311805)
+
+ -- Tamas SZERB <toma@rulez.org>  Tue, 10 Oct 2006 20:48:35 +0200
+i
 tsocks (1.8beta5-2) unstable; urgency=low
 
   * Not using socks server for name resolution
