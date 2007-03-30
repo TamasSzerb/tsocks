@@ -2,8 +2,9 @@ Source: tsocks
 Section: net
 Priority: optional
 Maintainer: Tamas SZERB <toma@rulez.org>
-Build-Depends: debhelper (>= 2.0.40), autotools-dev
-Standards-Version: 3.1.1
+Uploaders: Nico Golde <nion@debian.org>
+Build-Depends: debhelper (>= 5), autotools-dev, dpatch
+Standards-Version: 3.7.2
 
 Package: tsocks
 Architecture: any
@@ -14,3 +15,5 @@ Description: transparent network access through a SOCKS 4 or 5 proxy
  applications make to establish TCP connections and transparently
  proxies them as necessary. This allows existing applications to use
  SOCKS without recompilation or modification.
+ .
+  Homepage: htt://tsocks.sf.net

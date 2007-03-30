@@ -10,7 +10,7 @@ transparently allow an application to use a SOCKS proxy
 .br
 or
 .B tsocks
-.RB [-on|-off]
+.RB [\-on|\-off]
 .br
 or
 .B tsocks
@@ -23,7 +23,7 @@ would like to run socksified.
 run the application as specified with the environment (LD_PRELOAD) set
 such that tsocks(8) will transparently proxy SOCKS connections in 
 that program
-.IP \fB[-on|-off]
+.IP \fB[\-on|\-off]
 this option adds or removes tsocks(8) from the LD_PRELOAD environment
 variable. When tsocks(8) is in this variable all executed
 applications are automatically socksified. If you want to
@@ -32,12 +32,12 @@ like this: "source /usr/bin/tsocks" or ". /usr/bin/tsocks"
 .br
 Example:
 .br
-". tsocks -on" -- add the tsocks lib to LD_PRELOAD (don't forget the
+". tsocks \-on" \-\- add the tsocks lib to LD_PRELOAD (don't forget the
 leading dot!)
 .br
-". tsocks -off" -- remove the tsocks lib from LD_PRELOAD (don't forget the
+". tsocks \-off" \-\- remove the tsocks lib from LD_PRELOAD (don't forget the
 leading dot!)
-.IP \fB[-show|-sh]
+.IP \fB[\-show|\-sh]
 show the current value of the LD_PRELOAD variable
 .IP \fB<without\ any\ argument>
 create a new shell with LD_PRELOAD including tsocks(8). 

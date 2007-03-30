@@ -8,9 +8,11 @@ package=tsocks
 export DH_VERBOSE=1
 
 # This is the debhelper compatability version to use.
-export DH_COMPAT=2
+export DH_COMPAT=5
 
-build: build-stamp
+include /usr/share/dpatch/dpatch.make
+
+build: patch build-stamp
 build-stamp:
 	dh_testdir
 	-rm -f config.{cache,status} .ChangeLog.swp
@@ -26,15 +28,15 @@ build-stamp:
 	$(MAKE) CFLAGS="-O2 -g -Wall"
 	touch build-stamp
 
-clean:
+clean: unpatch
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp install-stamp
+	rm -f build-stamp install-stamp config.status
 	-$(MAKE) distclean
 	-rm -f `find . -name "*~"`
-	-rm -rf debian/$(package) debian/files* core debian/substvars
+	-rm -rf debian/$(package) debian/files* core debian/*substvars
 	#-rm -rf debian/plus/tsocks.8*
-	-rm -rf debian/conffiles
+	#-rm -rf debian/conffiles
 	dh_clean
 
 install: install-stamp
@@ -45,11 +47,11 @@ install-stamp: build
 
 	dh_installdirs
 
-	$(MAKE) install prefix=`pwd`/debian/$(package)/usr \
-	libdir=`pwd`/debian/$(package)/usr/lib \
-	mandir=`pwd`/debian/$(package)/usr/share/man
+	$(MAKE) install prefix=$(CURDIR)/debian/$(package)/usr \
+	libdir=$(CURDIR)/debian/$(package)/usr/lib \
+	mandir=$(CURDIR)/debian/$(package)/usr/share/man
 
-	install -m 600 tsocks.conf.complex.example `pwd`/debian/$(package)/etc/tsocks.conf
+	install -m 600 tsocks.conf.complex.example $(CURDIR)/debian/$(package)/etc/tsocks.conf
 	install validateconf $(CURDIR)/debian/$(package)/usr/bin
 	install inspectsocks $(CURDIR)/debian/$(package)/usr/bin
 	install saveme $(CURDIR)/debian/$(package)/usr/bin
@@ -83,6 +85,7 @@ binary-arch: build install
 	###dh_compress $(CURDIR)/debian/plus/tsocks.1
 	#install -o root -g root $(CURDIR)/debian/plus/tsocks.8 $(CURDIR)/debian/$(package)/usr/share/man/man8/
 	install -o root -g root $(CURDIR)/debian/plus/tsocks.1 $(CURDIR)/debian/$(package)/usr/share/man/man1/
+	install -o root -g root $(CURDIR)/debian/plus/saveme.8 $(CURDIR)/debian/$(package)/usr/share/man/man8/
 	dh_installman
 
 	dh_installchangelogs ChangeLog upstream
@@ -96,7 +99,7 @@ binary-arch: build install
 	dh_makeshlibs
 
 	#create conffiles automagically:
-	find $(CURDIR)/debian/$(package)/etc -type f|sed s:$(CURDIR)/debian/$(package):: >$(CURDIR)/debian/conffiles
+	#find $(CURDIR)/debian/$(package)/etc -type f|sed s:$(CURDIR)/debian/$(package):: >$(CURDIR)/debian/conffiles
 	dh_installdeb
 
 	dh_shlibdeps

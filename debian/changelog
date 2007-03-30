@@ -1,9 +1,26 @@
+tsocks (1.8beta5-4) unstable; urgency=low
+
+  * Added myself to uploaders (Closes: #387473).
+  * Bumped compat level.
+  * Conformed to Standards version 3.7.2.
+  * Added Homepage tag to control.
+  * Fixed broken copyright file.
+  * Use $(CURDIR) instead of `pwd` in rules.
+  * Added dependency on dpatch.
+  * Included patch by Kapil Hari Paranjape to prevent
+    export of specific symbol (Closes: #278906, #134729)
+  * Fix hyphens in manpage (Closes: #295568).
+  * Added saveme manpage (Closes: #316024).
+  * Removed conffiles, not needed anymore.
+
+ -- Nico Golde <nion@debian.org>  Fri, 30 Mar 2007 10:45:19 +0200
+
 tsocks (1.8beta5-3) unstable; urgency=low
 
   * TSOCKS_CONFFILE -> TSOCKS_CONF_FILE manpage bug (closes: #311805)
 
  -- Tamas SZERB <toma@rulez.org>  Tue, 10 Oct 2006 20:48:35 +0200
-i
+
 tsocks (1.8beta5-2) unstable; urgency=low
 
   * Not using socks server for name resolution
