@@ -16,4 +16,4 @@ Description: transparent network access through a SOCKS 4 or 5 proxy
  proxies them as necessary. This allows existing applications to use
  SOCKS without recompilation or modification.
  .
-  Homepage: htt://tsocks.sf.net
+  Homepage: http://tsocks.sf.net
