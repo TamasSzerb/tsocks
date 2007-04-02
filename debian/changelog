@@ -1,3 +1,13 @@
+tsocks (1.8beta5-6) unstable; urgency=low
+
+  * Integrated two patches by Peter Palfrader to fix
+    an infinite loop if recv returns 0 and to intercept
+    getpeername (Closes: #240429, #239025).
+  * Removed everything except etc from dirs since
+    the directories are created by Makefile.
+
+ -- Nico Golde <nion@debian.org>  Mon, 02 Apr 2007 20:08:32 +0200
+
 tsocks (1.8beta5-5) unstable; urgency=low
 
   * Corrected Homepage tag.

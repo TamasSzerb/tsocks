@@ -31,7 +31,7 @@ build-stamp:
 clean: unpatch
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp install-stamp config.status
+	rm -f build-stamp install-stamp config.status config.guess
 	-$(MAKE) distclean
 	-rm -f `find . -name "*~"`
 	-rm -rf debian/$(package) debian/files* core debian/*substvars
