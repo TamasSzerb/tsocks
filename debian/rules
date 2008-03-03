@@ -7,9 +7,6 @@ package=tsocks
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
-# This is the debhelper compatability version to use.
-export DH_COMPAT=5
-
 include /usr/share/dpatch/dpatch.make
 
 build: patch build-stamp
@@ -32,7 +29,7 @@ clean: unpatch
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp install-stamp config.status config.guess
-	-$(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
 	-rm -f `find . -name "*~"`
 	-rm -rf debian/$(package) debian/files* core debian/*substvars
 	#-rm -rf debian/plus/tsocks.8*

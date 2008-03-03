@@ -1,3 +1,16 @@
+tsocks (1.8beta5-7) unstable; urgency=low
+
+  * Switch to compat level 6 as it the recommend level now and move
+    this from rules to the compat file.
+  * Switch from Homepage tag to Homepage control field.
+  * Bump standards version to 3.7.3, no changes needed.
+  * Include patch (05_config_in_home.dpatch) by Reinhard Tartler
+    to make sure that tsocks looks for tsocks.conf in the user
+    home directory first (Closes: #465325).
+  * Fix debian-rules-ignores-make-clean-error lintian warning.
+
+ -- Nico Golde <nion@debian.org>  Mon, 03 Mar 2008 13:54:19 +0100
+
 tsocks (1.8beta5-6) unstable; urgency=low
 
   * Integrated two patches by Peter Palfrader to fix
