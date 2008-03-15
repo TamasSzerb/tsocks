@@ -1,3 +1,10 @@
+tsocks (1.8beta5-8) unstable; urgency=low
+
+  * Applied Viktor Radnai's patch to fall back to real connect if there is no default server
+    specified. Sam patch request from Joachim Breitner (Closes: #373642).
+
+ -- Tamas SZERB <toma@rulez.org>  Sat, 15 Mar 2008 12:03:56 +0100
+
 tsocks (1.8beta5-7) unstable; urgency=low
 
   * Switch to compat level 6 as it the recommend level now and move
