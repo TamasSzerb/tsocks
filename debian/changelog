@@ -1,3 +1,12 @@
+tsocks (1.8beta5-9) unstable; urgency=low
+
+  * Applied `fallback' patch to allow to fall back to establish
+    direct connection instead of sockified if the fallback = yes
+    option found in the tsocks.conf to make sure that the user
+    won't open a direct one accidentally. (Closes: #471112)
+
+ -- Tamas SZERB <toma@rulez.org>  Sun, 16 Mar 2008 13:04:44 +0100
+
 tsocks (1.8beta5-8) unstable; urgency=low
 
   * Applied Viktor Radnai's patch to fall back to real connect if there is no default server
