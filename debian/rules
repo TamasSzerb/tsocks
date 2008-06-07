@@ -12,7 +12,7 @@ include /usr/share/dpatch/dpatch.make
 build: patch build-stamp
 build-stamp:
 	dh_testdir
-	-rm -f config.{cache,status} .ChangeLog.swp
+	-rm -f config.cache config.status .ChangeLog.swp
 	cp /usr/share/misc/config.guess .
 	cp /usr/share/misc/config.sub .
 	./configure --prefix=/usr \
