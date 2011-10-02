@@ -22,7 +22,7 @@ build-stamp:
 		--enable-hostnames \
 		#--enable-socksdns \
 
-	$(MAKE) CFLAGS="-O2 -g -Wall"
+	$(MAKE) CFLAGS="-O2 -g -Wall -Wl,-soname,libtsocks.so.1"
 	touch build-stamp
 
 clean: unpatch
@@ -89,6 +89,7 @@ binary-arch: build install
 	dh_installchangelogs
 	dh_link
 	dh_strip
+	dh_lintian
 
 	dh_compress
 

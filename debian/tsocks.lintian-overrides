@@ -1,0 +1,3 @@
+# provide statically linked binary to let save the environment if
+# the ld.preload is broken:
+tsocks: statically-linked-binary usr/bin/saveme

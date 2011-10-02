@@ -1,3 +1,9 @@
+tsocks (1.8beta5-9.2) unstable; urgency=low
+
+  * Added SONAME (Closes: 636384)
+
+ -- Tamas SZERB <toma@rulez.org>  Sun, 02 Oct 2011 08:42:33 +0200
+
 tsocks (1.8beta5-9.1) unstable; urgency=medium
 
   * Non-maintainer upload.
